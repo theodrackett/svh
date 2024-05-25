@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "svh_backend": {
+      "main": "src/svh_backend/main.mo",
+      "type": "motoko"
+    },
+    "svh_frontend": {
+      "dependencies": [
+        "svh_backend"
+      ],
+      "source": [
+        "src/svh_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "svh_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
