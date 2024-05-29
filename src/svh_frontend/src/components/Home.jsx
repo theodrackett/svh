@@ -48,6 +48,7 @@ function Home() {
               eventName={eventDetails.eventName}
               eventFromDate={eventDetails.eventFromDate}
               eventCity={eventDetails.eventCity}
+              eventState={eventDetails.eventState}
               eventWebSite={eventDetails.eventWebSite}
             />
         ))}
