@@ -1,4 +1,35 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+import Event from "./Event";
+
 function Home() {
+
+    const [events, setEvents] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+      axios.get('/events_data_sm.json')
+        .then(response => {
+          const eventData = response.data.Event;
+          setEvents(Object.entries(eventData));
+          setLoading(false);
+        })
+        .catch(error => {
+          setError(error);
+          setLoading(false);
+        });
+    }, []);
+
+    if (loading) {
+      return <div>Loading...</div>;
+    }
+
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    }
+
     return (
         <div class="container">
           <section class="search-filter">
@@ -11,54 +42,15 @@ function Home() {
             </select>
           </section>
           <section class="event-listings">
-            <article class="event">
-              <img src="./assets/images/FoodTruckFestival.png" alt="Event image"/>
-              <h2>Food Truck Festival</h2>
-              <p>Date: June 1, 2024</p>
-              <p>Location: Central Park</p>
-              <p>Rating: ★★★★☆</p>
-              <a href="#" class="details-button">View Details</a>
-            </article>
-            <article class="event">
-              <img src="./assets/images/Clothing_Bazaar.webp" alt="Event image"/>
-              <h2>Clothing Bazaar</h2>
-              <p>Date: June 5, 2024</p>
-              <p>Location: Market Square</p>
-              <p>Rating: ★★★☆☆</p>
-              <a href="#" class="details-button">View Details</a>
-            </article>
-            <article class="event">
-              <img src="./assets/images/Pottery_Bonanza.webp" alt="Event image"/>
-              <h2>Pottery Bonanza</h2>
-              <p>Date: July 25, 2024</p>
-              <p>Location: Back a Yard</p>
-              <p>Rating: ★★★☆☆</p>
-              <a href="#" class="details-button">View Details</a>
-            </article>
-            <article class="event">
-              <img src="./assets/images/FoodTruckFestival.png" alt="Event image"/>
-              <h2>Food Truck Festival</h2>
-              <p>Date: June 1, 2024</p>
-              <p>Location: Central Park</p>
-              <p>Rating: ★★★★☆</p>
-              <a href="#" class="details-button">View Details</a>
-            </article>
-            <article class="event">
-              <img src="./assets/images/Clothing_Bazaar.webp" alt="Event image"/>
-              <h2>Clothing Bazaar</h2>
-              <p>Date: June 5, 2024</p>
-              <p>Location: Market Square</p>
-              <p>Rating: ★★★☆☆</p>
-              <a href="#" class="details-button">View Details</a>
-            </article>
-            <article class="event">
-              <img src="./assets/images/Pottery_Bonanza.webp" alt="Event image"/>
-              <h2>Pottery Bonanza</h2>
-              <p>Date: July 25, 2024</p>
-              <p>Location: Back a Yard</p>
-              <p>Rating: ★★★☆☆</p>
-              <a href="#" class="details-button">View Details</a>
-            </article>
+          {events.map(([eventName, eventDetails]) => (
+          // key={eventName}>
+            <Event 
+              eventName={eventDetails.eventName}
+              eventFromDate={eventDetails.eventFromDate}
+              eventCity={eventDetails.eventCity}
+              eventWebSite={eventDetails.eventWebSite}
+            />
+        ))}
           </section>
         </div>
     )
