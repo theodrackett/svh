@@ -116,3 +116,54 @@ footer {
 footer p {
   margin: 0;
 }
+
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.event-details {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.event-details h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.event-details p, .event-details ul {
+  margin: 0.5rem 0;
+}
+
+.event-details ul {
+  padding-left: 1.5rem;
+}
+
+.event-details a {
+  color: #333;
+  text-decoration: none;
+}
+
+.event-details a:hover {
+  text-decoration: underline;
+}
+
+.back-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.back-button:hover {
+  background-color: #555;
+}

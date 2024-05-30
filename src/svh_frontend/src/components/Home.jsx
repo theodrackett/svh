@@ -1,34 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
+import GetEvents from './GetEvents';
 import Event from "./Event";
 
 function Home() {
 
-    const [events, setEvents] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+  const { events, loading, error } = GetEvents();
 
-    useEffect(() => {
-      axios.get('/events_data_sm.json')
-        .then(response => {
-          const eventData = response.data.Event;
-          setEvents(Object.entries(eventData));
-          setLoading(false);
-        })
-        .catch(error => {
-          setError(error);
-          setLoading(false);
-        });
-    }, []);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-    if (loading) {
-      return <div>Loading...</div>;
-    }
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    }
 
     return (
         <div class="container">
@@ -42,16 +29,9 @@ function Home() {
             </select>
           </section>
           <section class="event-listings">
-          {events.map(([eventName, eventDetails]) => (
-          // key={eventName}>
-            <Event 
-              eventName={eventDetails.eventName}
-              eventFromDate={eventDetails.eventFromDate}
-              eventCity={eventDetails.eventCity}
-              eventState={eventDetails.eventState}
-              eventWebSite={eventDetails.eventWebSite}
-            />
-        ))}
+          {events.map(event => (
+                <Event event={event[1]} />
+            ))}
           </section>
         </div>
     )

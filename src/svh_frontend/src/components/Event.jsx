@@ -7,16 +7,16 @@ function getRandomNumber() {
 function Event(props) {
   
     const randomImage = "/assets/images/" + "photo-" + String(getRandomNumber()) + ".jpg";
-    console.log(randomImage);
+
     return (
         <article class="event">
-        <img src={randomImage} alt={props.eventName} style={{ width: '256', height: '200px', objectFit: 'cover' }} />
-        <h2>{props.eventName}</h2>
-        <p>{props.eventFromDate}</p>
-        <p>{props.eventCity}, {props.eventState}</p>
+        <img src={randomImage} alt={props.event.eventName} style={{ width: '280', height: '200px', objectFit: 'cover' }} />
+        <h2>{props.event.eventName}</h2>
+        <p>{props.event.eventFromDate}</p>
+        <p>{props.event.eventCity}, {props.event.eventState}</p>
         <p>Rating: ★★★★☆</p>
-        <a href={props.eventWebSite}>Website</a>
-        <a href="#" class="details-button">View Details</a>
+        <a href={props.event.eventWebSite}>Website</a>
+        {/* <Link to={`/event/${props.eventId}`} className="details-button">View Details</Link> */}
       </article>
     )
 }
