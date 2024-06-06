@@ -6,10 +6,6 @@ import EventDetail from './components/EventDetail ';
 
 function App() {
 
-  // return (<main>
-  //   <Home />
-  //   </main>
-  // );
   return (
     <Router>
         <div className="App">

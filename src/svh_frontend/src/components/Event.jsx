@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 function getRandomNumber() {
   return Math.floor(Math.random() * 25) + 1;
@@ -16,7 +16,7 @@ function Event(props) {
         <p>{props.event.eventCity}, {props.event.eventState}</p>
         <p>Rating: ★★★★☆</p>
         <a href={props.event.eventWebSite}>Website</a>
-        {/* <Link to={`/event/${props.eventId}`} className="details-button">View Details</Link> */}
+        <Link to={`/event/${props.event.id}`} className="details-button">View Details</Link>
       </article>
     )
 }
