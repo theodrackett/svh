@@ -1,45 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 
-function EventDetail () {
-    const { id } = useParams();
-
-    const [event, setEvent] = useState(null);
-
-    useEffect(() => {
-        const fetchEvent = async () => {
-            try {
-                const response = await fetch('/events_data_sm.json');
-                const data = await response.json();
-                console.log(`this is the hson data: ${data}`);
-                const eventData = data.Event[id];
-                console.log(`the evend id is: ${eventData}`);
-                setEvent(eventData);
-            } catch (error) {
-                console.error('Error fetching event:', error);
-            }
-        };
-
-        fetchEvent();
-    }, [id]);
-
-    if (!event) {
-        return <div>Loading...</div>;
-    }
+function EventDetail (props) {
 
     return (
         <div className="container">
             <section className="event-details">
-                <h2>{event.eventName}</h2>
-                <p><strong>Category:</strong> {event.eventCategory}</p>
-                <p><strong>Location:</strong> {event.eventStreet}, {event.eventCity}, {event.eventState}, {event.eventCountry}</p>
-                <p><strong>Date:</strong> {event.eventFromDate} - {event.eventToDate}</p>
-                <p><strong>Organizer:</strong> {event.eventCreator}</p>
+                <h2>{props.event.eventName}</h2>
+                <p><strong>Category:</strong> {props.event.eventCategory}</p>
+                <p><strong>Location:</strong> {props.event.eventStreet}, {props.event.eventCity}, {props.event.eventState}, {props.event.eventCountry}</p>
+                <p><strong>Date:</strong> {props.event.eventFromDate} - {props.event.eventToDate}</p>
+                <p><strong>Organizer:</strong> {props.event.eventCreator}</p>
                 <p><strong>Contact Info:</strong></p>
                 <ul>
-                    <li><strong>Email:</strong> <a href={`mailto:${event.eventEmail}`}>{event.eventEmail}</a></li>
-                    <li><strong>Phone:</strong> <a href={`tel:${event.eventPhone}`}>{event.eventPhone}</a></li>
-                    <li><strong>Website:</strong> <a href={event.eventWebSite} target="_blank" rel="noopener noreferrer">{event.eventWebSite}</a></li>
+                    <li><strong>Email:</strong> <a href={`mailto:${props.event.eventEmail}`}>{props.event.eventEmail}</a></li>
+                    <li><strong>Phone:</strong> <a href={`tel:${props.event.eventPhone}`}>{props.event.eventPhone}</a></li>
+                    <li><strong>Website:</strong> <a href={props.event.eventWebSite} target="_blank" rel="noopener noreferrer">{props.event.eventWebSite}</a></li>
                 </ul>
             </section>
             <a href="/" className="back-button">Back to Events</a>

@@ -11,7 +11,6 @@ function App() {
         <div className="App">
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/event/:id" element={<EventDetail />} />
             </Routes>
         </div>
     </Router>
