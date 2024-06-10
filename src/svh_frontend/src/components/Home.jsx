@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import Event from "./Event";
 import EventDetail from "./EventDetail ";
+import Search from "./Search";
 
 function Home() {
   
@@ -308,21 +309,16 @@ function Home() {
     <Event event={event} onClick={handleEventDetailsClick} />
     ))}</>
 
+  let searchBar = <Search />
   if (selectedEvent) {
-    content = <EventDetail event={selectedEvent} />
+    content = <EventDetail event={selectedEvent} />;
+    searchBar = <></>;
+    // setSelectedEvent(null);
   }
     
   return (
       <div className="container">
-        <section className="search-filter">
-          <input type="text" placeholder="Search events..." />
-          <select>
-            <option value="all">All Categories</option>
-            <option value="food">Food</option>
-            <option value="clothing">Clothing</option>
-            <option value="crafts">Crafts</option>
-          </select>
-        </section>
+        {searchBar}
         <section className="event-listings">
           {content}
         </section>

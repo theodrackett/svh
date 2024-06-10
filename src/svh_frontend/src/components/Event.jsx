@@ -1,11 +1,20 @@
-import { Link } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function getRandomNumber() {
+
   return Math.floor(Math.random() * 25) + 1;
+  
 }
 
 function Event(props) {
   
+    const navigate = useNavigate();
+
+    const goToDetails = () => {
+      navigate(`/event/${props.event.id}`);
+    };
+
     const randomImage = "/assets/images/" + "photo-" + String(getRandomNumber()) + ".jpg";
 
     return (
@@ -16,7 +25,7 @@ function Event(props) {
         <p>{props.event.eventCity}, {props.event.eventState}</p>
         <p>Rating: ★★★★☆</p>
         <a href={props.event.eventWebSite}>Website</a>
-        <button onClick={() => props.onClick(props.event)}>Event Details</button>
+        <button onClick={goToDetails}>View Details</button>
       </article>
     )
 }

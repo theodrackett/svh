@@ -14,7 +14,7 @@ header {
 .container {
   margin-top: 1rem;
   width: 80%;
-  margin: 0 auto;
+  margin-bottom: 1rem;
 }
 
 header h1 {
@@ -51,6 +51,7 @@ main {
 }
 
 .search-filter {
+  margin-top: 1rem;
   display: flex;
   justify-content: space-between;
   margin-bottom: 2rem;
@@ -125,6 +126,7 @@ footer p {
 }
 
 .event-details {
+  margin-top: 1rem;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -158,6 +160,7 @@ footer p {
 .back-button {
   display: inline-block;
   margin-top: 1rem;
+  margin-bottom: 1rem;
   padding: 0.5rem 1rem;
   background-color: #333;
   color: #fff;

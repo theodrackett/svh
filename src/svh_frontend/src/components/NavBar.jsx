@@ -2,7 +2,7 @@
 
 function NavBar() {
     return (<header>
-    <div class="container">
+    <div className="container">
         <h1>Street Vendor Helper</h1>
         <nav>
             <ul>
