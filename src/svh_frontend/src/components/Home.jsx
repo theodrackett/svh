@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
 
 import Event from "./Event";
 import EventDetail from "./EventDetail ";

@@ -17,6 +17,13 @@ header {
   margin-bottom: 1rem;
 }
 
+.nav-container {
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 header h1 {
   margin: 0;
   display: inline-block;
@@ -87,6 +94,10 @@ main {
 }
 
 .event p {
+  margin: 0.5rem 0;
+}
+
+.event a {
   margin: 0.5rem 0;
 }
 
