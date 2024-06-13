@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 
+import Header from "./Header";
+import Footer from "./Footer";
 import Event from "./Event";
 import EventDetail from "./EventDetail ";
 import Search from "./Search";
@@ -312,16 +314,16 @@ function Home() {
   if (selectedEvent) {
     content = <EventDetail event={selectedEvent} />;
     searchBar = <></>;
-    // setSelectedEvent(null);
   }
     
   return (
       <div className="container">
+        <Header />
         {searchBar}
         <section className="event-listings">
           {content}
         </section>
-        
+        <Footer />
       </div>
   )
 }
