@@ -1,11 +1,9 @@
-import Categories from "./Categories";
 
 function Search() {
     return (
-        <section className="search-filter">
+      <div className="search-filter">
         <input type="text" placeholder="Search events..." />
-        <Categories />
-      </section>
+      </div>
     )
 }
 

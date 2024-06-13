@@ -6,9 +6,14 @@ body {
 }
 
 header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: #333;
   color: #fff;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .container {
@@ -17,30 +22,18 @@ header {
   margin-bottom: 1rem;
 }
 
-.nav-container {
-  background-color: #333;
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
 header h1 {
   margin: 0;
-  display: inline-block;
-}
-
-nav {
-  float: right;
 }
 
 nav ul {
+  display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 nav ul li {
-  display: inline;
   margin-left: 1rem;
 }
 
@@ -57,11 +50,19 @@ main {
   padding: 2rem 0;
 }
 
-.search-filter {
-  margin-top: 1rem;
+.top-bar {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  padding: 1rem 2rem;
+}
+
+.search-filter {
+  display: flex;
+}
+
+.categories {
+  display: flex;
 }
 
 .search-filter input[type="text"], .search-filter select {

@@ -4,7 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Event from "./Event";
 import EventDetail from "./EventDetail ";
-import Search from "./Search";
+import TopBar from "./TopBar";
 
 function Home() {
   
@@ -310,16 +310,16 @@ function Home() {
     <Event event={event} onClick={handleEventDetailsClick} />
     ))}</>
 
-  let searchBar = <Search />
+  let topBar = <TopBar />
   if (selectedEvent) {
     content = <EventDetail event={selectedEvent} />;
-    searchBar = <></>;
+    topBar = <></>;
   }
     
   return (
       <div className="container">
         <Header />
-        {searchBar}
+        {topBar}
         <section className="event-listings">
           {content}
         </section>
