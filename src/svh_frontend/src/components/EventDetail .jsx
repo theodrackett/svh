@@ -1,6 +1,8 @@
 import React from 'react';
 import BackButton from './BackButton';
 import { useParams } from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
 
 function EventDetail(props) {
 
@@ -301,6 +303,7 @@ function EventDetail(props) {
 
     return (
         <div className="container">
+          <Header />
             <section className="event-details">
                 <h2>{event.eventName}</h2>
                 <p><strong>Category:</strong> {event.eventCategory}</p>
@@ -314,7 +317,11 @@ function EventDetail(props) {
                     <li><strong>Website:</strong> <a href={event.eventWebSite} target="_blank" rel="noopener noreferrer">{event.eventWebSite}</a></li>
                 </ul>
             </section>
-            <BackButton />
+            <div className='back-button-container'>
+              <BackButton />
+            </div>
+            
+          <Footer />
         </div>
     );
 }

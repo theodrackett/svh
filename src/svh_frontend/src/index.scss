@@ -183,3 +183,9 @@ footer p {
 .back-button:hover {
   background-color: #555;
 }
+
+.back-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
