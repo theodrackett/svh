@@ -317,7 +317,7 @@ function EventDetail(props) {
                     <li><strong>Website:</strong> <a href={event.eventWebSite} target="_blank" rel="noopener noreferrer">{event.eventWebSite}</a></li>
                 </ul>
             </section>
-            <div className='back-button-container'>
+            <div className='submit-button'>
               <BackButton />
             </div>
             

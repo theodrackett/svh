@@ -3,7 +3,7 @@ import Categories from "./Categories";
 
 const TopBar = () => {
     return (
-        <div className="top-bar">
+        <div className="dos-element-container">
             <Search />
             <Categories />
         </div>
