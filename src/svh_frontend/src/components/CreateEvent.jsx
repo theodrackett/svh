@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid'; // Using uuid for ID generation
 import Header from './Header';
 import Footer from './Footer';
+import BackButton from './BackButton';
 
 const CreateEvent = () => {
   const [formData, setFormData] = useState({
@@ -240,7 +241,11 @@ const CreateEvent = () => {
             />
           </label>
         </div>
-        <button className='submit-button' type="submit">Create Event</button>
+        <div className='dos-element-container'>
+          <BackButton />
+          <button className='submit-button' type="submit">Create Event</button>
+        </div>
+        
       </form>
       <Footer />
     </div>

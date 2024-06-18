@@ -178,9 +178,14 @@ footer p {
 }
 
 .submit-button {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  display: inline-block;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
 }
 
 .event-description {
