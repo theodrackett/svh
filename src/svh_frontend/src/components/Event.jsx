@@ -19,12 +19,12 @@ function Event(props) {
 
     return (
         <article className="event">
-        <img src={randomImage} alt={props.event.eventName} style={{ width: '280', height: '200px', objectFit: 'cover' }} />
-        <h2>{props.event.eventName}</h2>
-        <p>{props.event.eventFromDate}</p>
-        <p>{props.event.eventCity}, {props.event.eventState}</p>
+        <img src={randomImage} alt={props.event.name} style={{ width: '280', height: '200px', objectFit: 'cover' }} />
+        <h2>{props.event.name}</h2>
+        <p>{props.event.fromDate}</p>
+        <p>{props.event.city}, {props.event.state}</p>
         <p>Rating: ★★★★☆</p>
-        <a href={props.event.eventWebSite}>Website</a>
+        <a href={props.event.webSite}>Website</a>
         <button onClick={goToDetails}>View Details</button>
       </article>
     )

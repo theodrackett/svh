@@ -5,27 +5,34 @@ import Footer from './Footer';
 import BackButton from './BackButton';
 
 const CreateEvent = () => {
-  const [formData, setFormData] = useState({
-    eventCategory: 'Default',
-    eventCity: 'Oakland',
-    eventContact: 'Theo Drackett',
-    eventCountry: 'United States',
-    eventCreator: 'Theo',
+  const [event, setEvent] = useState({
+    category: 'Default',
+    city: 'Oakland',
+    contact: 'Theo Drackett',
+    country: 'United States',
+    creator: 'Theo',
     description: 'Default event for testing',
-    eventEmail: 'theodrackett@hotmail.com',
-    eventFromDate: '11/11/2024',
-    eventName: 'Default test event 1',
-    eventPhone: '555-555-5555',
-    eventState: 'CA',
-    eventStreet: '500 Howard St',
-    eventToDate: '11/11/2024',
-    eventWebSite: 'https://www.streetvendorhelper.com',
+    email: 'theodrackett@hotmail.com',
+    fromDate: '2024-07-21',
+    name: 'Default test event 1',
+    phone: '555-555-5555',
+    state: 'CA',
+    street: '500 Howard St',
+    toDate: '2024-07-21',
+    webSite: 'https://www.streetvendorhelper.com',
     frequency: 'Weekly'
   });
 
+  function addEvent(newEvent) {
+    setEvents(prevEvents => {
+      svh_backend.createEvent(newEvent.category, newEvent.city, newEvent.contact, newEvent.country, newEvent.creator, newEvent.email, newEvent.fromDate, newEvent.name, newEvent.phone, newEvent.state, newEvent.street, newEvent.toDate, newEvent.webSite, newEvent.frequency);
+      return [newEvent, ...prevEvents];
+    })
+  }
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
+    setEvent(prevState => ({
       ...prevState,
       [name]: value
     }));
@@ -35,36 +42,27 @@ const CreateEvent = () => {
     e.preventDefault();
     const eventID = uuidv4(); // Generate a UUID for the event
     const newEvent = {
-      ...formData,
+      ...event,
       id: eventID // Attach the generated ID to the form data
     };
 
     try {
-      const response = await fetch('http://localhost:8000/create-event', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newEvent)
-      });
-      if (!response.ok) throw new Error('Failed to create event');
-      const result = await response.json();
-      alert('Event Created Successfully: ' + result.message);
-      setFormData({
-        eventCategory: '',
-        eventCity: '',
-        eventContact: '',
-        eventCountry: '',
-        eventCreator: '',
+      addEvent(newEvent);
+      setEvent({
+        category: '',
+        city: '',
+        contact: '',
+        country: '',
+        creator: '',
         description: '',
-        eventEmail: '',
-        eventFromDate: '',
-        eventName: '',
-        eventPhone: '',
-        eventState: '',
-        eventStreet: '',
-        eventToDate: '',
-        eventWebSite: '',
+        email: '',
+        fromDate: '',
+        name: '',
+        phone: '',
+        state: '',
+        street: '',
+        toDate: '',
+        webSite: '',
         frequency: ''
       });
     } catch (error) {
@@ -83,8 +81,8 @@ const CreateEvent = () => {
             Event Name:
             <input
               type="text"
-              name="eventName"
-              value={formData.eventName}
+              name="name"
+              value={event.name}
               onChange={handleChange}
               required
             />
@@ -94,7 +92,7 @@ const CreateEvent = () => {
             <input
               type="date"
               name="fromDate"
-              value={formData.eventFromDate}
+              value={event.fromDate}
               onChange={handleChange}
               required
             />
@@ -118,7 +116,7 @@ const CreateEvent = () => {
             <input
             type="text"
               name="city"
-              value={formData.eventCity}
+              value={event.city}
               onChange={handleChange}
               required
             />
@@ -130,7 +128,7 @@ const CreateEvent = () => {
             <input
               type="text"
               name="contact"
-              value={formData.eventContact}
+              value={event.contact}
               onChange={handleChange}
               required
             />
@@ -140,7 +138,7 @@ const CreateEvent = () => {
             <input
               type="text"
               name="country"
-              value={formData.eventCountry}
+              value={event.country}
               onChange={handleChange}
             />
           </label>
@@ -151,7 +149,7 @@ const CreateEvent = () => {
             <input
               type="text"
               name="creator"
-              value={formData.eventCreator}
+              value={event.creator}
               onChange={handleChange}
             />
           </label>
@@ -160,7 +158,7 @@ const CreateEvent = () => {
             <input
               type="email"
               name="email"
-              value={formData.eventEmail}
+              value={event.email}
               onChange={handleChange}
             />
           </label>
@@ -171,7 +169,7 @@ const CreateEvent = () => {
             <input
               type="tel"
               name="phone"
-              value={formData.eventPhone}
+              value={event.phone}
               onChange={handleChange}
               required
             />
@@ -181,7 +179,7 @@ const CreateEvent = () => {
             <input
               type="text"
               name="state"
-              value={formData.eventState}
+              value={event.state}
               onChange={handleChange}
             />
           </label>
@@ -192,7 +190,7 @@ const CreateEvent = () => {
             <input
               type="text"
               name="street"
-              value={formData.eventStreet}
+              value={event.street}
               onChange={handleChange}
             />
           </label>
@@ -201,7 +199,7 @@ const CreateEvent = () => {
             <input
               type="date"
               name="toDate"
-              value={formData.eventToDate}
+              value={event.toDate}
               onChange={handleChange}
             />
           </label>
@@ -212,7 +210,7 @@ const CreateEvent = () => {
             <input
               type="url"
               name="website"
-              value={formData.eventWebSite}
+              value={event.webSite}
               onChange={handleChange}
             />
           </label>
@@ -233,7 +231,7 @@ const CreateEvent = () => {
           <label>Description:</label>
             <textarea className='event-description'
               name="description"
-              value={formData.description}
+              value={event.description}
               onChange={handleChange}
             />
         </div>
