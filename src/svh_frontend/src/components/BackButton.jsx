@@ -9,7 +9,7 @@ function BackButton() {
   };
 
   return (
-    <button className='back-button' onClick={goBack}>
+    <button className='submit-button' onClick={goBack}>
       Go Back
     </button>
   );

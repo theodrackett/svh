@@ -6,21 +6,21 @@ import BackButton from './BackButton';
 
 const CreateEvent = () => {
   const [formData, setFormData] = useState({
-    eventCategory: '',
-    eventCity: '',
-    eventContact: '',
-    eventCountry: '',
-    eventCreator: '',
-    description: '',
-    eventEmail: '',
-    eventFromDate: '',
-    eventName: '',
-    eventPhone: '',
-    eventState: '',
-    eventStreet: '',
-    eventToDate: '',
-    eventWebSite: '',
-    frequency: ''
+    eventCategory: 'Default',
+    eventCity: 'Oakland',
+    eventContact: 'Theo Drackett',
+    eventCountry: 'United States',
+    eventCreator: 'Theo',
+    description: 'Default event for testing',
+    eventEmail: 'theodrackett@hotmail.com',
+    eventFromDate: '11/11/2024',
+    eventName: 'Default test event 1',
+    eventPhone: '555-555-5555',
+    eventState: 'CA',
+    eventStreet: '500 Howard St',
+    eventToDate: '11/11/2024',
+    eventWebSite: 'https://www.streetvendorhelper.com',
+    frequency: 'Weekly'
   });
 
   const handleChange = (e) => {
@@ -103,13 +103,15 @@ const CreateEvent = () => {
         <div className='dos-element-container'>
           <label>
             Category:
-            <input
-              type="text"
-              name="category"
-              value={formData.eventCategory}
-              onChange={handleChange}
-              required
-            />
+            <select id="event-category" onChange={ handleChange }>
+              <option value="0">Default</option>
+              <option value="1">Farmers market</option>
+              <option value="2">Festival</option>
+              <option value="3">Concert</option>
+              <option value="4">Flee market</option>
+              <option value="5">Antique show</option>
+              <option value="5">Car show</option>
+            </select>
           </label>
           <label>
             City:
@@ -140,7 +142,6 @@ const CreateEvent = () => {
               name="country"
               value={formData.eventCountry}
               onChange={handleChange}
-              required
             />
           </label>
         </div>
@@ -152,7 +153,6 @@ const CreateEvent = () => {
               name="creator"
               value={formData.eventCreator}
               onChange={handleChange}
-              required
             />
           </label>
           <label>
@@ -162,7 +162,6 @@ const CreateEvent = () => {
               name="email"
               value={formData.eventEmail}
               onChange={handleChange}
-              required
             />
           </label>
         </div>
@@ -184,7 +183,6 @@ const CreateEvent = () => {
               name="state"
               value={formData.eventState}
               onChange={handleChange}
-              required
             />
           </label>
         </div>
@@ -196,7 +194,6 @@ const CreateEvent = () => {
               name="street"
               value={formData.eventStreet}
               onChange={handleChange}
-              required
             />
           </label>
           <label>
@@ -206,7 +203,6 @@ const CreateEvent = () => {
               name="toDate"
               value={formData.eventToDate}
               onChange={handleChange}
-              required
             />
           </label>
         </div>
@@ -218,7 +214,6 @@ const CreateEvent = () => {
               name="website"
               value={formData.eventWebSite}
               onChange={handleChange}
-              required
             />
           </label>
           <label>
