@@ -230,14 +230,12 @@ const CreateEvent = () => {
           </label>
         </div>
         <div className='event-description-container'>
-          <label>
-            Description:
+          <label>Description:</label>
             <textarea className='event-description'
               name="description"
               value={formData.description}
               onChange={handleChange}
             />
-          </label>
         </div>
         <div className='dos-element-container'>
           <BackButton />
