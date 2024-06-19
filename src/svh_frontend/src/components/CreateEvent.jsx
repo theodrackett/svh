@@ -108,7 +108,7 @@ const CreateEvent = () => {
               <option value="1">Farmers market</option>
               <option value="2">Festival</option>
               <option value="3">Concert</option>
-              <option value="4">Flee market</option>
+              <option value="4">Flea market</option>
               <option value="5">Antique show</option>
               <option value="5">Car show</option>
             </select>
@@ -218,12 +218,15 @@ const CreateEvent = () => {
           </label>
           <label>
             Frequency:
-            <input
-              type="text"
-              name="frequency"
-              value={formData.frequency}
-              onChange={handleChange}
-            />
+            <select id="event-frequency" onChange={ handleChange }>
+              <option value="0">One time</option>
+              <option value="1">Weekly</option>
+              <option value="2">Monthly</option>
+              <option value="3">First Friday</option>
+              <option value="4">First Saturday</option>
+              <option value="5">Bi-weekly</option>
+              <option value="5">Anually</option>
+            </select>
           </label>
         </div>
         <div className='event-description-container'>
