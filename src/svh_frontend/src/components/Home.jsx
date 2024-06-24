@@ -13,7 +13,6 @@ function Home() {
   const [selectedEvent, setSelectedEvent] = useState(null);
 
   useEffect(() => {
-    console.log("Effect triggered");
     fetchData();
   }, [])
 

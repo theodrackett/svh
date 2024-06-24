@@ -28,7 +28,7 @@ actor SVH {
       city = "Bryan";
       contact = "Event Info";
       country = "United States";
-      creator = "Kyla Escober";
+      creator = "Theo Drackett";
       description = "A vibrant street fair showcasing local art.";
       email = "info@destinationbryan.com";
       fromDate = "Apr 10, 2024";
@@ -46,7 +46,7 @@ actor SVH {
       city = "Redmond";
       contact = "Event Info";
       country = "United States";
-      creator = "Kyla Escober";
+      creator = "Theo Drackett";
       description = "Celebrate local brewers with craft beer tasting.";
       email = "wabl@washingtonbeer.com";
       fromDate = "Jun 18, 2024";
@@ -64,7 +64,7 @@ actor SVH {
       city = "Walla Walla";
       contact = "Event Info";
       country = "United States";
-      creator = "Kyla Escober";
+      creator = "Theo Drackett";
       description = "Vintage market with antiques and collectibles.";
       email = "info@loveofjunk.com";
       fromDate = "Jun 11, 2024";
@@ -82,7 +82,7 @@ actor SVH {
       city = "Anacortes";
       contact = "Event Info";
       country = "United States";
-      creator = "Kyla Escober";
+      creator = "Theo Drackett";
       description = "Fun-filled festival by the waterfront.";
       email = "info@anacortes.org";
       fromDate = "Jun 05, 2024";
@@ -100,7 +100,7 @@ actor SVH {
       city = "Anacortes";
       contact = "Event Info";
       country = "United States";
-      creator = "Kyla Escober";
+      creator = "Theo Drackett";
       description = "Showcase of boats and yachts.";
       email = "info@anacortes.org";
       fromDate = "Jun 25, 2024";
@@ -118,7 +118,7 @@ actor SVH {
       city = "Packwood";
       contact = "Event Info";
       country = "United States";
-      creator = "Kyla Escober";
+      creator = "Theo Drackett";
       description = "Large flea market with diverse vendors.";
       email = "";
       fromDate = "May 28, 2024";
@@ -136,7 +136,7 @@ actor SVH {
       city = "Packwood";
       contact = "Event Info";
       country = "United States";
-      creator = "Kyla Escober";
+      creator = "Theo Drackett";
       description = "Labor Day flea market with unique finds.";
       email = "";
       fromDate = "Sep 03, 2024";
@@ -154,7 +154,7 @@ actor SVH {
       city = "White Salmon";
       contact = "Event Info";
       country = "United States";
-      creator = "Kyla Escober";
+      creator = "Theo Drackett";
       description = "Annual spring festival with local crafts.";
       email = "wsspringfest@gmail.com";
       fromDate = "May 28, 2024";
@@ -172,7 +172,7 @@ actor SVH {
       city = "Seattle";
       contact = "Event Info";
       country = "United States";
-      creator = "Kyla Escober";
+      creator = "Theo Drackett";
       description = "Festival celebrating chocolate and confections.";
       email = "info@nwchocolate.com";
       fromDate = "Oct 30, 2024";
@@ -190,7 +190,7 @@ actor SVH {
       city = "Mossyrock";
       contact = "Event Info";
       country = "United States";
-      creator = "Kyla Escober";
+      creator = "Theo Drackett";
       description = "Celebration of blueberries with local vendors.";
       email = "maalblueberryfestival@gmail.com";
       fromDate = "Aug 06, 2024";
@@ -208,7 +208,7 @@ actor SVH {
       city = "Darrington";
       contact = "Event Info";
       country = "United States";
-      creator = "Kyla Escober";
+      creator = "Theo Drackett";
       description = "Music festival in a scenic location.";
       email = "vending@summermeltdownfest.com";
       fromDate = "Aug 05, 2024";
@@ -226,7 +226,7 @@ actor SVH {
       city = "Elma";
       contact = "Event Info";
       country = "United States";
-      creator = "Kyla Escober";
+      creator = "Theo Drackett";
       description = "County fair with rides, games, and food.";
       email = "reaston@co.grays-harbor.wa.us";
       fromDate = "Aug 04, 2024";
@@ -244,7 +244,7 @@ actor SVH {
       city = "Silvana";
       contact = "Event Info";
       country = "United States";
-      creator = "Kyla Escober";
+      creator = "Theo Drackett";
       description = "Traditional fair with local crafts and food.";
       email = "info@silvanafair.com";
       fromDate = "Jul 31, 2024";
@@ -262,7 +262,7 @@ actor SVH {
       city = "Quincy";
       contact = "Event Info";
       country = "United States";
-      creator = "Kyla Escober";
+      creator = "Theo Drackett";
       description = "Music festival with a variety of artists.";
       email = "foodvendors@watershedfest.com";
       fromDate = "Jul 30, 2024";
@@ -280,7 +280,7 @@ actor SVH {
       city = "Index";
       contact = "Event Info";
       country = "United States";
-      creator = "Kyla Escober";
+      creator = "Theo Drackett";
       description = "Annual arts festival with local artists.";
       email = "";
       fromDate = "Jul 31, 2024";
@@ -298,7 +298,7 @@ actor SVH {
       city = "Kirkland";
       contact = "Event Info";
       country = "United States";
-      creator = "Kyla Escober";
+      creator = "Theo Drackett";
       description = "Summer festival with music, food, and crafts.";
       email = "vendors@chumpchange.org";
       fromDate = "Jul 30, 2024";
@@ -316,7 +316,7 @@ actor SVH {
       city = "Silverdale";
       contact = "Event Info";
       country = "United States";
-      creator = "Kyla Escober";
+      creator = "Theo Drackett";
       description = "Festival with live music and local food.";
       email = "whalingdaysvendors@gmail.com";
       fromDate = "Jul 23, 2024";
@@ -374,8 +374,16 @@ actor SVH {
       // Debug.print(debug_show(events));
     };
 
+    // Get all events
     public func readEvents(): async [Event] {
       return List.toArray(events);
     };
+
+    // Get a single event
+    public query func findEventById(id: Text) : async ?Event {
+      List.find<Event>(events, func(event: Event) : Bool {
+      event.id == id
+    })
+  };
 
 };

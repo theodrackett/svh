@@ -11,8 +11,10 @@ function Event(props) {
   
     const navigate = useNavigate();
 
+    const event = props.event;
+
     const goToDetails = () => {
-      navigate(`/event/${props.event.id}`);
+      navigate(`/event/${props.event.id}`, { state: { event } });
     };
 
     const randomImage = "/assets/images/" + "photo-" + String(getRandomNumber()) + ".jpg";
