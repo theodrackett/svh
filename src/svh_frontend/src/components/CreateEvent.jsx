@@ -3,8 +3,11 @@ import { v4 as uuidv4 } from 'uuid'; // Using uuid for ID generation
 import Header from './Header';
 import Footer from './Footer';
 import BackButton from './BackButton';
+import { svh_backend } from "../../../declarations/svh_backend";
 
 const CreateEvent = () => {
+
+  const [events, setEvents] = useState([]);
   const [event, setEvent] = useState({
     category: 'Default',
     city: 'Oakland',
@@ -25,7 +28,22 @@ const CreateEvent = () => {
 
   function addEvent(newEvent) {
     setEvents(prevEvents => {
-      svh_backend.createEvent(newEvent.category, newEvent.city, newEvent.contact, newEvent.country, newEvent.creator, newEvent.email, newEvent.fromDate, newEvent.name, newEvent.phone, newEvent.state, newEvent.street, newEvent.toDate, newEvent.webSite, newEvent.frequency);
+      svh_backend.createEvent(newEvent.category,
+        newEvent.city,
+        newEvent.contact,
+        newEvent.country,
+        newEvent.creator,
+        newEvent.description,
+        newEvent.email,
+        newEvent.fromDate,
+        newEvent.name,
+        newEvent.phone,
+        newEvent.state,
+        newEvent.street,
+        newEvent.toDate,
+        newEvent.webSite,
+        newEvent.frequency,
+        newEvent.id);
       return [newEvent, ...prevEvents];
     })
   }

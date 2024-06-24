@@ -9,6 +9,7 @@ actor SVH {
     contact: Text;
     country: Text;
     creator: Text;
+    description: Text;
     email: Text;
     fromDate: Text;
     name: Text;
@@ -28,6 +29,7 @@ actor SVH {
       contact = "Event Info";
       country = "United States";
       creator = "Kyla Escober";
+      description = "A vibrant street fair showcasing local art.";
       email = "info@destinationbryan.com";
       fromDate = "Apr 10, 2024";
       name = "Downtown Street and Art Fair";
@@ -45,6 +47,7 @@ actor SVH {
       contact = "Event Info";
       country = "United States";
       creator = "Kyla Escober";
+      description = "Celebrate local brewers with craft beer tasting.";
       email = "wabl@washingtonbeer.com";
       fromDate = "Jun 18, 2024";
       name = "Washington Brewers Festival";
@@ -62,6 +65,7 @@ actor SVH {
       contact = "Event Info";
       country = "United States";
       creator = "Kyla Escober";
+      description = "Vintage market with antiques and collectibles.";
       email = "info@loveofjunk.com";
       fromDate = "Jun 11, 2024";
       name = "Love of Junk Walla Walla's Vintage Market";
@@ -79,6 +83,7 @@ actor SVH {
       contact = "Event Info";
       country = "United States";
       creator = "Kyla Escober";
+      description = "Fun-filled festival by the waterfront.";
       email = "info@anacortes.org";
       fromDate = "Jun 05, 2024";
       name = "Waterfront Festival";
@@ -96,6 +101,7 @@ actor SVH {
       contact = "Event Info";
       country = "United States";
       creator = "Kyla Escober";
+      description = "Showcase of boats and yachts.";
       email = "info@anacortes.org";
       fromDate = "Jun 25, 2024";
       name = "Anacortes Boat & Yacht Show";
@@ -113,6 +119,7 @@ actor SVH {
       contact = "Event Info";
       country = "United States";
       creator = "Kyla Escober";
+      description = "Large flea market with diverse vendors.";
       email = "";
       fromDate = "May 28, 2024";
       name = "Packwood Memorial Day Flea Market";
@@ -130,6 +137,7 @@ actor SVH {
       contact = "Event Info";
       country = "United States";
       creator = "Kyla Escober";
+      description = "Labor Day flea market with unique finds.";
       email = "";
       fromDate = "Sep 03, 2024";
       name = "Packwood Labor Day Flea Market";
@@ -147,6 +155,7 @@ actor SVH {
       contact = "Event Info";
       country = "United States";
       creator = "Kyla Escober";
+      description = "Annual spring festival with local crafts.";
       email = "wsspringfest@gmail.com";
       fromDate = "May 28, 2024";
       name = "44th Annual Spring Festival";
@@ -164,6 +173,7 @@ actor SVH {
       contact = "Event Info";
       country = "United States";
       creator = "Kyla Escober";
+      description = "Festival celebrating chocolate and confections.";
       email = "info@nwchocolate.com";
       fromDate = "Oct 30, 2024";
       name = "The Northwest Chocolate Festival";
@@ -181,6 +191,7 @@ actor SVH {
       contact = "Event Info";
       country = "United States";
       creator = "Kyla Escober";
+      description = "Celebration of blueberries with local vendors.";
       email = "maalblueberryfestival@gmail.com";
       fromDate = "Aug 06, 2024";
       name = "Blueberry Festival";
@@ -198,6 +209,7 @@ actor SVH {
       contact = "Event Info";
       country = "United States";
       creator = "Kyla Escober";
+      description = "Music festival in a scenic location.";
       email = "vending@summermeltdownfest.com";
       fromDate = "Aug 05, 2024";
       name = "Summer Meltdown Festival";
@@ -215,6 +227,7 @@ actor SVH {
       contact = "Event Info";
       country = "United States";
       creator = "Kyla Escober";
+      description = "County fair with rides, games, and food.";
       email = "reaston@co.grays-harbor.wa.us";
       fromDate = "Aug 04, 2024";
       name = "Grays Harbor County Fair";
@@ -232,6 +245,7 @@ actor SVH {
       contact = "Event Info";
       country = "United States";
       creator = "Kyla Escober";
+      description = "Traditional fair with local crafts and food.";
       email = "info@silvanafair.com";
       fromDate = "Jul 31, 2024";
       name = "Silvana Fair";
@@ -249,6 +263,7 @@ actor SVH {
       contact = "Event Info";
       country = "United States";
       creator = "Kyla Escober";
+      description = "Music festival with a variety of artists.";
       email = "foodvendors@watershedfest.com";
       fromDate = "Jul 30, 2024";
       name = "Watershed Music Festival";
@@ -266,6 +281,7 @@ actor SVH {
       contact = "Event Info";
       country = "United States";
       creator = "Kyla Escober";
+      description = "Annual arts festival with local artists.";
       email = "";
       fromDate = "Jul 31, 2024";
       name = "Index Arts Festival";
@@ -283,6 +299,7 @@ actor SVH {
       contact = "Event Info";
       country = "United States";
       creator = "Kyla Escober";
+      description = "Summer festival with music, food, and crafts.";
       email = "vendors@chumpchange.org";
       fromDate = "Jul 30, 2024";
       name = "Kirkland Summerfest";
@@ -300,6 +317,7 @@ actor SVH {
       contact = "Event Info";
       country = "United States";
       creator = "Kyla Escober";
+      description = "Festival with live music and local food.";
       email = "whalingdaysvendors@gmail.com";
       fromDate = "Jul 23, 2024";
       name = "Whaling Days Festival";
@@ -311,7 +329,7 @@ actor SVH {
       frequency = "";
       id = "31b5827e-d4b3-4c40-9c5e-579eeaaf87aa"
     }
-  ]);
+]);
 
   public func createEvent(
     category: Text,
@@ -319,6 +337,7 @@ actor SVH {
     contact: Text,
     country: Text,
     creator: Text,
+    description: Text,
     email: Text,
     fromDate: Text,
     name: Text,
@@ -332,12 +351,13 @@ actor SVH {
     ) 
     {
 
-      let newEvent = {
+      let newEvent: Event = {
         category = category;
         city = city;
         contact = contact;
         country = country;
         creator = creator;
+        description = description;
         email = email;
         fromDate = fromDate;
         name = name;

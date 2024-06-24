@@ -19,7 +19,6 @@ function Home() {
 
   async function fetchData() {
     const eventsList = await svh_backend.readEvents();
-    // setEvents(eventsArray);
     setEvents(eventsList);
   }
   
