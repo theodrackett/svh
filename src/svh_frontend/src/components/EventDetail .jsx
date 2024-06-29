@@ -11,8 +11,6 @@ function EventDetail() {
     const location = useLocation();
     const [event, setEvent] = useState(location.state?.event || null);
 
-    console.log(`The event is: ${event}`)
-
     useEffect(() => {
       console.log("useEffect in event deails triggered.")
       if (!event) {

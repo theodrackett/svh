@@ -1,7 +1,51 @@
 import List "mo:base/List";
 import Text "mo:base/Text";
+import Debug "mo:base/Debug";
 
 actor SVH {
+
+  public type User = {
+    username: Text;
+    password: Text;
+    firstName: Text;
+    lastName: Text;
+    email: Text;
+    phone: Text;
+  };
+
+  var users: List.List<User> = List.nil<User>();
+
+  public func createUser(
+    usernameText: Text,
+    passwordText: Text,
+    firstNameText: Text,
+    lastNameText: Text,
+    emailText: Text, 
+    phoneText: Text) {
+
+    let newUser: User = {
+      username = usernameText;
+      password = passwordText;
+      firstName =firstNameText;
+      lastName = lastNameText;
+      email = emailText;
+      phone = phoneText;
+    };
+
+    users := List.push( newUser, users);
+    Debug.print(debug_show(users));
+  };
+
+  public query func readUsers(): async [User] {
+    // Returns all users
+    return List.toArray(users);
+  };
+
+   public query func findUser(username: Text) : async ?User {
+      List.find<User>(users, func(user: User) : Bool {
+      user.username == username;
+    })
+  };
 
   public type Event = {
     category: Text;
