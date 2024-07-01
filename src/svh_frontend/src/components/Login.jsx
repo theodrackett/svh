@@ -2,6 +2,7 @@ import React, { useState, useEffect} from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import { svh_backend } from "../../../declarations/svh_backend";
+import BackButton from "./BackButton";
 
 function Login () {
 
@@ -48,12 +49,16 @@ function Login () {
         event.preventDefault();
     }
 
+    function signUp() {
+        console.log("Ok, I will create a new user.")
+    }
+
     return (
     <div className="container">
         <Header />
-        <h2>Sign on</h2>
+        <h2>Log in</h2>
         <form onSubmit={submitUser}>
-            <div  className='dos-element-container'>
+            <div className="login-container">
                 <label>
                     Username:
                     <input
@@ -74,9 +79,12 @@ function Login () {
                         required
                     />
                 </label>
-                onClick({submitUser});
+                <button className='submit-button' onClick={submitUser}>Submit</button>
             </div>
         </form>
+        <div>
+            <button className='submit-button' onClick={signUp}>Sign up</button>
+        </div>
         <Footer />
     </div>
     )
