@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import BackButton from './BackButton';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import { svh_backend } from "../../../declarations/svh_backend";
+import Button from './Button';
 
 function EventDetail() {
 
+    const navigate = useNavigate();
     const { id } = useParams();
     const location = useLocation();
     const [event, setEvent] = useState(location.state?.event || null);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
       console.log("useEffect in event deails triggered.")
@@ -31,6 +33,12 @@ function EventDetail() {
       return <div>Loading...</div>;
     }
 
+    const goBack = () => {
+      setLoading(true);
+      navigate(-1);
+      setLoading(false);
+    };
+
     return (
         <div className="container">
           <Header />
@@ -47,8 +55,8 @@ function EventDetail() {
                     <li><strong>Website:</strong> <a href={event.webSite} target="_blank" rel="noopener noreferrer">{event.webSite}</a></li>
                 </ul>
             </section>
-            <div className='submit-button'>
-              <BackButton />
+            <div>
+              <Button onClick={goBack} loading={loading}>Go Back</Button>
             </div>
             
           <Footer />

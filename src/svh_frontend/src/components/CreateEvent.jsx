@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid'; // Using uuid for ID generation
 import Header from './Header';
 import Footer from './Footer';
-import BackButton from './BackButton';
 import { svh_backend } from "../../../declarations/svh_backend";
+import Button from './Button';
+import { useNavigate } from 'react-router-dom';
 
 const CreateEvent = () => {
 
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [events, setEvents] = useState([]);
   const [event, setEvent] = useState({
     category: 'Default',
@@ -25,6 +28,12 @@ const CreateEvent = () => {
     webSite: 'https://www.streetvendorhelper.com',
     frequency: 'Weekly'
   });
+
+  const goBack = () => {
+    setLoading(true);
+    navigate(-1);
+    setLoading(false);
+  };
 
   function addEvent(newEvent) {
     setEvents(prevEvents => {
@@ -254,8 +263,8 @@ const CreateEvent = () => {
             />
         </div>
         <div className='dos-element-container'>
-          <BackButton />
-          <button className='submit-button' type="submit">Create Event</button>
+          <Button onClick={goBack} loading={loading}>Go Back</Button>
+          <Button type='submit'>Create Event</Button>
         </div>
         
       </form>
