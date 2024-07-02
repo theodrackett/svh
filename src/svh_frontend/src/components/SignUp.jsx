@@ -3,6 +3,8 @@ import { svh_backend } from "../../../declarations/svh_backend";
 import Header from './Header';
 import Footer from './Footer';
 
+// This is a placeholder for sign up. I will soon be changing it to use Internet Identity instead
+
 function SignUp() {
 
     const [user, setUser] = useState({
@@ -28,12 +30,10 @@ function SignUp() {
 
         // Check if user exists
         
-        const userExist = await fetchUser(user.username);
-
-        console.log(`The value of user exist is: ${userExist}`);
+        const userDetails = await svh_backend.findUser(user.username);
 
         // If the user doesn't exist create it
-        if (!userExist) {
+        if (userDetails.length == 0) {
             console.log(`Creating the new user, ${user.username}`);
             svh_backend.createUser(
                 user.username,
@@ -56,20 +56,6 @@ function SignUp() {
         });
 
     };
-
-    async function fetchUser(username) {
-        try {
-          const user = await svh_backend.findUser(username);
-          // Check if the user already exists
-          if (user.length == 0) {
-            return false;
-          }
-          return true;
-        } catch (error) {
-          console.error(`Error fetching user: ${error}`);
-          return false;
-        }
-      };  
 
     return (
         <div className="container">

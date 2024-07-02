@@ -2,42 +2,39 @@ import React, { useState, useEffect} from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import { svh_backend } from "../../../declarations/svh_backend";
+import { useNavigate } from "react-router-dom";
 
+// This is a placeholder for login. I will soon be changing it to use Internet Identity instead
 function Login () {
 
+    const navigate = useNavigate();
     const [user, setUser] = useState({
         username: "",
         password: ""
     });
 
-    function processUser() {
+    async function processUser() {
         // if user exists, log her in if the password is correct else sign her up
-        useEffect(() => {
-            console.log("useEffect in login page triggered.")
-            if (user) {
-                const fetchUser = async () => {
-                    try {
-                        const userDetails = await svh_backend.findUser(user.username);
-                        console.log(`user exists: ${userDetails}`);
-                    } catch (error) {
-                        console.log('User does not exist. Go to sign up page');
-                    }
-                };
-            
-                fetchUser();
+        const userDetails = await svh_backend.findUser(user.username);
+
+        if (userDetails.length != 0) {
+            if (user.password == userDetails[0].password){
+                console.log('you are logged in!');
+            } else {
+                console.log('Incorrect password...please try again.');
             }
-        }, [user.username, user]);
+        } else {
+            console.log(`${user.username} not found. Please sign up.`);
+        }
     }
 
-    function handleChange(event) {
+    const handleChange = (event) => {
         const { name, value } = event.target;
-
-        setUser(() => {
-            return {
-                [name]: value
-            };
-        });
-    }
+        setUser(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
 
     function submitUser(event) {
         processUser();
@@ -49,7 +46,8 @@ function Login () {
     }
 
     function signUp() {
-        console.log("Ok, I will create a new user.")
+        // Navigate to sign up page
+        navigate('/sign-up');
     }
 
     return (
