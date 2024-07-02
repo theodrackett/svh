@@ -14,7 +14,7 @@ function Home() {
 
   useEffect(() => {
     fetchData();
-  }, [])
+  }, []);
 
   async function fetchData() {
     const eventsList = await svh_backend.readEvents();

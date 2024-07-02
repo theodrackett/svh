@@ -1,6 +1,5 @@
 import List "mo:base/List";
 import Text "mo:base/Text";
-import Debug "mo:base/Debug";
 
 actor SVH {
 
@@ -11,29 +10,30 @@ actor SVH {
     lastName: Text;
     email: Text;
     phone: Text;
+
   };
 
   var users: List.List<User> = List.nil<User>();
 
   public func createUser(
-    usernameText: Text,
-    passwordText: Text,
-    firstNameText: Text,
-    lastNameText: Text,
-    emailText: Text, 
-    phoneText: Text) {
+    username: Text,
+    password: Text,
+    firstName: Text,
+    lastName: Text,
+    email: Text,
+    phone: Text) {
 
     let newUser: User = {
-      username = usernameText;
-      password = passwordText;
-      firstName =firstNameText;
-      lastName = lastNameText;
-      email = emailText;
-      phone = phoneText;
+      username = username;
+      password = password;
+      firstName = firstName;
+      lastName = lastName;
+      email = email;
+      phone = phone;
     };
 
     users := List.push( newUser, users);
-    Debug.print(debug_show(users));
+    // Debug.print(debug_show(users));
   };
 
   public query func readUsers(): async [User] {
@@ -41,10 +41,10 @@ actor SVH {
     return List.toArray(users);
   };
 
-   public query func findUser(username: Text) : async ?User {
-      List.find<User>(users, func(user: User) : Bool {
+  public query func findUser(username: Text) : async ?User {
+    return List.find<User>(users, func(user: User) : Bool {
       user.username == username;
-    })
+    });
   };
 
   public type Event = {
@@ -415,7 +415,6 @@ actor SVH {
       };
 
       events := List.push(newEvent, events);
-      // Debug.print(debug_show(events));
     };
 
     // Get all events
