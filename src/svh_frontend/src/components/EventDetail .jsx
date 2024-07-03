@@ -4,14 +4,14 @@ import Header from './Header';
 import Footer from './Footer';
 import { svh_backend } from "../../../declarations/svh_backend";
 import Button from './Button';
+import useGoBack from '../hooks/useGoBack';
 
 function EventDetail() {
 
-    const navigate = useNavigate();
+    const { goBack, loading} = useGoBack();
     const { id } = useParams();
     const location = useLocation();
     const [event, setEvent] = useState(location.state?.event || null);
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
       console.log("useEffect in event deails triggered.")
@@ -32,12 +32,6 @@ function EventDetail() {
     if (!event) {
       return <div>Loading...</div>;
     }
-
-    const goBack = () => {
-      setLoading(true);
-      navigate(-1);
-      setLoading(false);
-    };
 
     return (
         <div className="container">

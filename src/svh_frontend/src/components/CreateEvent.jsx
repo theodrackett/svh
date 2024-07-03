@@ -4,12 +4,11 @@ import Header from './Header';
 import Footer from './Footer';
 import { svh_backend } from "../../../declarations/svh_backend";
 import Button from './Button';
-import { useNavigate } from 'react-router-dom';
+import useGoBack from '../hooks/useGoBack';
 
 const CreateEvent = () => {
 
-  const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
+  const { goBack, loading} = useGoBack();
   const [events, setEvents] = useState([]);
   const [event, setEvent] = useState({
     category: 'Default',
@@ -28,12 +27,6 @@ const CreateEvent = () => {
     webSite: 'https://www.streetvendorhelper.com',
     frequency: 'Weekly'
   });
-
-  const goBack = () => {
-    setLoading(true);
-    navigate(-1);
-    setLoading(false);
-  };
 
   function addEvent(newEvent) {
     setEvents(prevEvents => {
