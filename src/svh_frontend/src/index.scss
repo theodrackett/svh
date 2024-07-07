@@ -9,8 +9,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #333;
-  color: #fff;
+  background-color: #FFC100;
+  color: black;
   padding: 1rem 2rem;
   width: 100%;
   box-sizing: border-box;
@@ -37,7 +37,7 @@ nav ul li {
 }
 
 nav ul li a {
-  color: #fff;
+  color: black;
   text-decoration: none;
 }
 
@@ -112,8 +112,8 @@ main {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #333;
-  color: #fff;
+  background-color: #FFC100;
+  color: black;
   transition: background-color 0.3s ease;
 }
 
@@ -123,12 +123,12 @@ main {
 }
 
 .btn:hover {
-  background-color: #555;
+  background-color: #FF8A08;
 }
 
 footer {
-  background-color: #333;
-  color: #fff;
+  background-color: #FFC100;
+  color: black;
   padding: 1rem 0;
   text-align: center;
   margin-top: 2rem;
@@ -140,8 +140,8 @@ footer p {
 
 .event-details {
   margin-top: 1rem;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: white;
+  border: 1px solid #FFC100;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: 2rem;
@@ -150,7 +150,7 @@ footer p {
 
 .event-details h2 {
   margin-top: 0;
-  color: #333;
+  color: black;
 }
 
 .event-details p, .event-details ul {
@@ -162,7 +162,7 @@ footer p {
 }
 
 .event-details a {
-  color: #333;
+  color: black;
   text-decoration: none;
 }
 
