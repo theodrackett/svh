@@ -22,6 +22,26 @@ function Event(props) {
       setLoading(false);
     };
 
+    const getRating = () => {
+      switch(props.event.rating) {
+        case 0:
+          return ('☆☆☆☆☆');
+        case 1:
+          return ('★☆☆☆☆');
+        case 2:
+          return ('★★☆☆☆');
+        case 3:
+          return ('★★★☆☆');
+        case 4:
+          return ('★★★★☆');
+        case 5:
+          return ('★★★★★');
+        default:
+          return ('☆☆☆☆☆');
+
+      }
+    }
+
     const randomImage = "/assets/images/" + "photo-" + String(getRandomNumber()) + ".jpg";
 
     return (
@@ -30,7 +50,13 @@ function Event(props) {
         <h2>{props.event.name}</h2>
         <p>{props.event.fromDate}</p>
         <p>{props.event.city}, {props.event.state}</p>
-        <p>Rating: ★★★★☆</p>
+        <div class="star-rating">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+        </div>
         <a href={props.event.webSite}>Website</a>
         <Button onClick={goToDetails} loading={loading}>
           View Details

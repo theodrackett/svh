@@ -6,6 +6,8 @@ import CreateEvent from './CreateEvent';
 import Header from './Header';
 import Login from './Login';
 import SignUp from './SignUp';
+import EditEvent from './EditEvent';
+import WriteReview from './WriteReview';
 
 function App() {
 
@@ -19,6 +21,8 @@ function App() {
                 <Route path="/create-event" element={<CreateEvent />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/sign-up" element={<SignUp />} />
+                <Route path="/edit-event" element={<EditEvent />} />
+                <Route path="/write-review" element={<WriteReview />} />
             </Routes>
         </div>
     </Router>

@@ -12,9 +12,18 @@ function EventDetail() {
     const { id } = useParams();
     const location = useLocation();
     const [event, setEvent] = useState(location.state?.event || null);
+    const navigate = useNavigate();
+
+    function editEvent() {
+      navigate('/edit-event');
+    };
+
+    function writeReview() {
+      console.log('I was asked to write a review');
+      navigate('/write-review');
+    };
 
     useEffect(() => {
-      console.log("useEffect in event deails triggered.")
       if (!event) {
         const fetchEvent = async () => {
           try {
@@ -49,8 +58,10 @@ function EventDetail() {
                     <li><strong>Website:</strong> <a href={event.webSite} target="_blank" rel="noopener noreferrer">{event.webSite}</a></li>
                 </ul>
             </section>
-            <div>
+            <div className='container dos-element-container'>
               <Button onClick={goBack} loading={loading}>Go Back</Button>
+              <Button onClick={editEvent} loading={loading}>Edit event</Button>
+              <Button onClick={writeReview} loading={loading}>Write a review</Button>
             </div>
             
           <Footer />
