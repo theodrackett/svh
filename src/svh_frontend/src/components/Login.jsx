@@ -3,10 +3,13 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { svh_backend } from "../../../declarations/svh_backend";
 import { useNavigate } from "react-router-dom";
+import Button from './Button';
+import useGoBack from '../hooks/useGoBack';
 
 // This is a placeholder for login. I will soon be changing it to use Internet Identity instead
 function Login () {
 
+    const { goBack, loading} = useGoBack();
     const navigate = useNavigate();
     const [user, setUser] = useState({
         username: "",
@@ -76,11 +79,12 @@ function Login () {
                             required
                         />
                     </label>
-                    <button className='submit-button' onClick={submitUser}>Submit</button>
                 </div>
             </form>
-            <div>
-                <button className='submit-button' onClick={signUp}>Sign up</button>
+            <div className='container dos-element-container'>
+                <Button onClick={goBack} loading={loading}>Go Back</Button>
+                <Button onClick={submitUser}>Log in</Button>
+                <Button onClick={signUp} loading={loading}>Don't have an account? Sign up</Button>
             </div>
             <Footer />
         </div>
