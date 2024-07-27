@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { svh_backend } from "../../../declarations/svh_backend";
 import Header from './Header';
 import Footer from './Footer';
+import Button from './Button';
+import useGoBack from '../hooks/useGoBack';
 
 // This is a placeholder for sign up. I will soon be changing it to use Internet Identity instead
 
 function SignUp() {
+
+    const { goBack, loading} = useGoBack();
 
     const [user, setUser] = useState({
         username: "",
@@ -121,7 +125,10 @@ function SignUp() {
                             onChange={handleChange}
                         />
                     </label>
-                    <button className='submit-button' type="submit">Submit</button>
+                    <div className='container dos-element-container'>
+                        <Button onClick={goBack} loading={loading}>Go Back</Button>
+                        <Button type='submit'>Submit</Button>
+                    </div>
                 </div>
             </form>
             <Footer />
