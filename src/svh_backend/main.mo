@@ -1,6 +1,7 @@
 import List "mo:base/List";
 import Text "mo:base/Text";
 import Nat "mo:base/Nat";
+import Float "mo:base/Float";
 
 actor SVH {
 
@@ -64,7 +65,10 @@ actor SVH {
     toDate: Text;
     webSite: Text;
     frequency: Text;
-    id: Text
+    id: Text;
+    rating: Nat;
+    lat: Float;
+    lon: Float;
   };
 
   var events: List.List<Event> = List.fromArray([
@@ -85,7 +89,9 @@ actor SVH {
         webSite = "https://www.downtownbryan.com/downtown-street-art-fair";
         frequency = "";
         id = "c4fa73dc-8c9d-4248-9cfa-9dc2ffc189e8";
-        rating = 4
+        rating = 4;
+        lat = 30.673241;
+        lon = -96.373779
     },
     {
         category = "Arts & Craft";
@@ -104,7 +110,9 @@ actor SVH {
         webSite = "https://washingtonbeer.com/festivals/washington-brewers-festival.php";
         frequency = "";
         id = "4f9a734f-baf0-409e-988b-5b1690649e53";
-        rating = 0
+        rating = 0;
+        lat = 47.661770;
+        lon = -122.125980
     },
     {
         category = "Arts & Craft";
@@ -123,7 +131,9 @@ actor SVH {
         webSite = "https://loveofjunk.com/index.html";
         frequency = "";
         id = "8507778d-6cf1-41d3-b317-23f4f42f196a";
-        rating = 3
+        rating = 3;
+        lat = 37.991287;
+        lon = -121.670202
     },
     {
         category = "Arts & Craft";
@@ -142,7 +152,9 @@ actor SVH {
         webSite = "https://loveofjunk.com/index.html";
         frequency = "";
         id = "16917a3b-fc8f-434f-9366-a84a3c86a5ca";
-        rating = 4
+        rating = 4;
+        lat = 48.513648;
+        lon = -122.610631
     },
     {
         category = "Arts & Craft";
@@ -161,7 +173,9 @@ actor SVH {
         webSite = "https://anacortes.org/anacortes-boat-show/";
         frequency = "";
         id = "bd222e45-b794-4b69-aee6-30c1239925e5";
-        rating = 3
+        rating = 3;
+        lat = 48.513648;
+        lon = -122.610631
     },
     {
         category = "Arts & Craft";
@@ -180,7 +194,9 @@ actor SVH {
         webSite = "https://packwoodfleamarket.com/home";
         frequency = "";
         id = "6169aa5c-3132-4cd9-9090-371283646ad3";
-        rating = 2
+        rating = 2;
+        lat = 46.6078848;
+        lon = -121.6556201
     },
     {
         category = "Arts & Craft";
@@ -199,7 +215,9 @@ actor SVH {
         webSite = "https://packwoodfleamarket.com/home";
         frequency = "";
         id = "887b9280-7218-45e6-b851-b56d2665c659";
-        rating = 4
+        rating = 4;
+        lat = 46.6078848;
+        lon = -121.6556201
     },
     {
         category = "Arts & Craft";
@@ -218,7 +236,9 @@ actor SVH {
         webSite = "https://whitesalmonspringfestival.com/";
         frequency = "";
         id = "1e402713-1d0a-4f78-8b4f-a9d2e3a08b9d";
-        rating = 2
+        rating = 2;
+        lat = 45.727911;
+        lon = -121.486663
     },
     {
         category = "Arts & Craft";
@@ -237,7 +257,9 @@ actor SVH {
         webSite = "https://www.nwchocolate.com/";
         frequency = "";
         id = "ac82d689-a3ed-450e-a463-1db5c0213907";
-        rating = 4
+        rating = 4;
+        lat = 47.6310336;
+        lon = -122.3828351
     },
     {
         category = "Arts & Craft";
@@ -256,7 +278,9 @@ actor SVH {
         webSite = "https://mossyrockfestivals.org/";
         frequency = "";
         id = "02f95ed9-7620-49bf-a3ae-1cc488502f23";
-        rating = 0
+        rating = 0;
+        lat = 46.5289171;
+        lon = -122.4828494
     },
     {
         category = "Arts & Craft";
@@ -275,7 +299,9 @@ actor SVH {
         webSite = "https://summermeltdownfest.com/rescheduled/";
         frequency = "";
         id = "fe120b6e-f366-4f52-836c-2636cd587665";
-        rating = 4
+        rating = 4;
+        lat = 48.27511;
+        lon = -121.6555821
     },
     {
         category = "Arts & Craft";
@@ -294,7 +320,9 @@ actor SVH {
         webSite = "https://www.ghcfairgrounds.com/p/about";
         frequency = "";
         id = "c172339a-6e84-4853-86a8-a8118a86c3c8";
-        rating = 2
+        rating = 2;
+        lat = 38.016911;
+        lon = -121.814905
     },
     {
         category = "Arts & Craft";
@@ -313,7 +341,9 @@ actor SVH {
         webSite = "https://www.silvanafair.com/m.fair.html";
         frequency = "";
         id = "2371f118-93a3-432e-82d0-2c2a675085c2";
-        rating = 0
+        rating = 0;
+        lat = 37.935217;
+        lon = -121.686481
     },
     {
         category = "Arts & Craft";
@@ -332,7 +362,9 @@ actor SVH {
         webSite = "https://watershedfest.com/";
         frequency = "";
         id = "d0feee8e-35a9-43d8-a9dd-ef8ce9c87dd5";
-        rating = 5
+        rating = 5;
+        lat = 38.0306955;
+        lon = -121.8842986
     },
     {
         category = "Arts & Craft";
@@ -351,7 +383,30 @@ actor SVH {
         webSite = "https://indexartsfestival.wordpress.com/";
         frequency = "";
         id = "87270033-ff81-4a59-aeef-86306125961d";
-        rating = 1
+        rating = 1;
+        lat = 47.820254;
+        lon = -121.5537622
+    },
+    {
+        category = "Arts & Craft";
+        city = "Oakley";
+        contact = "Theo";
+        country = "United States";
+        creator = "Theo Drackett";
+        description = "Summer Jam Reggae Festival";
+        email = "vendorhelperapp@gmail.com";
+        fromDate = "Jul 30, 2024";
+        name = "Summer Jam Reggae Festival";
+        phone = "555-555-1212";
+        state = "CA";
+        street = "500 Howard St";
+        toDate = "Aug 01, 2024";
+        webSite = "https://streetvendorhelper.com/";
+        frequency = "";
+        id = "caac5741-e706-437e-8a6e-d87dvdfba5ff";
+        rating = 1;
+        lat = 37.99119;
+        lon = -121.670142
     },
     {
         category = "Arts & Craft";
@@ -370,7 +425,9 @@ actor SVH {
         webSite = "https://kirklandsummerfest.com/";
         frequency = "";
         id = "caac5741-e706-437e-8a6e-d87bbbfba5ff";
-        rating = 1
+        rating = 1;
+        lat = 37.99119;
+        lon = -121.670142
     },
     {
         category = "Arts & Craft";
@@ -389,7 +446,9 @@ actor SVH {
         webSite = "https://whalingdays.com/#:~:text=We%20look%20forward%20to%20seeing,in%20%E2%80%9COld%20Town%E2%80%9D%20Silverdale.";
         frequency = "";
         id = "31b5827e-d4b3-4c40-9c5e-579eeaaf87aa";
-        rating = 4
+        rating = 4;
+        lat = 47.6442728;
+        lon = -122.6942015
     }
 ]);
 
@@ -410,7 +469,9 @@ actor SVH {
     webSite: Text,
     frequency: Text,
     id: Text,
-    rating: Nat
+    rating: Nat,
+    lat: Float,
+    lon: Float
     ) 
     {
 
@@ -431,15 +492,36 @@ actor SVH {
         webSite = webSite;
         frequency = frequency;
         id = id;
-        rating = rating
+        rating = rating;
+        lat = lat;
+        lon = lon
       };
 
       events := List.push(newEvent, events);
     };
 
-    // Get all events
-    public func readEvents(): async [Event] {
-      return List.toArray(events);
+    private func simpleDistance(lat1: Float, lon1: Float, lat2: Float, lon2: Float): Float {
+        let dLat = lat2 - lat1;
+        let dLon = lon2 - lon1;
+        let scaleLat = 69.0; // Conversion factor for latitude to miles
+        let scaleLon = 69.0 * Float.cos(toRadians((lat1 + lat2) / 2.0)); // Scale for longitude in miles, varies with latitude
+        return Float.sqrt((dLat * scaleLat) ** 2 + (dLon * scaleLon) ** 2);
+    };
+
+    private func toRadians(degrees: Float): Float {
+        return degrees * (3.141592653589793 / 180.0);
+    };
+
+    public func fetchLocalEvents(userLat: Float, userLon: Float, maxDistance: Float): async [Event] {
+        let filteredEvents = List.filter(events, func (event: Event): Bool {
+            let distance = simpleDistance(userLat, userLon, event.lat, event.lon);
+            return distance <= maxDistance; // maxDistance in miles
+        });
+        return List.toArray(filteredEvents);
+    };
+
+    public func fetchAllEvents(): async [Event] {
+        return List.toArray(events);
     };
 
     // Get a single event
