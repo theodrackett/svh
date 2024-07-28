@@ -259,7 +259,6 @@ const CreateEvent = () => {
           <Button onClick={goBack} loading={loading}>Go Back</Button>
           <Button type='submit'>Create Event</Button>
         </div>
-        
       </form>
       <Footer />
     </div>
