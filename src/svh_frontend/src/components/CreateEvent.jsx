@@ -5,14 +5,17 @@ import Footer from './Footer';
 import { svh_backend } from "../../../declarations/svh_backend";
 import Button from './Button';
 import useGoBack from '../hooks/useGoBack';
+import axios from 'axios';
 
 const CreateEvent = () => {
 
   const { goBack, loading} = useGoBack();
   const [events, setEvents] = useState([]);
+  const [location, setLocation] = useState(null);
+
   const [event, setEvent] = useState({
     category: 'Default',
-    city: 'Oakland',
+    city: 'Pittsburg',
     contact: 'Theo Drackett',
     country: 'United States',
     creator: 'Theo',
@@ -22,11 +25,29 @@ const CreateEvent = () => {
     name: 'Default test event 1',
     phone: '555-555-5555',
     state: 'CA',
-    street: '500 Howard St',
+    street: '670 Railroad Ave',
     toDate: '2024-07-21',
     webSite: 'https://www.streetvendorhelper.com',
     frequency: 'Weekly'
   });
+
+  const getCoordinatesFromAddress = async (address) => {
+    const apiKey = 'c3478c58572a4700b795f022a60d73b2';
+    const url = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(address)}&key=${apiKey}`;
+
+    try {
+        const response = await axios.get(url);
+        const data = response.data;
+        if (data.results.length > 0) {
+            const { lat, lng } = data.results[0].geometry;
+            return { lat, lng };
+        } else {
+            return { error: 'No location found for the specified address.' };
+        }
+    } catch (error) {
+        return { error: error.message };
+    }
+  };
 
   function addEvent(newEvent) {
     setEvents(prevEvents => {
@@ -45,7 +66,10 @@ const CreateEvent = () => {
         newEvent.toDate,
         newEvent.webSite,
         newEvent.frequency,
-        newEvent.id);
+        newEvent.id,
+        newEvent.rating,
+        newEvent.lat,
+        newEvent.lon)
       return [newEvent, ...prevEvents];
     })
   }
@@ -61,9 +85,29 @@ const CreateEvent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const eventID = uuidv4(); // Generate a UUID for the event
+    const rating = 0;
+    const address = `${event.street}, ${event.city}, ${event.country}`;
+
+    const coords = await getCoordinatesFromAddress(address);
+    if (!coords.error) {
+      setLocation(coords);
+      console.log('Coordinates:', coords);
+      // console.log(`The latitude is: ${location.lat} and the longitude is: ${location.lng}`);
+    } else {
+      console.error(coords.error);
+    };
+
+    // const lat = location.lat;
+    // const lon = location.lng;
+    const lat = 38.030784;
+    const lng = -121.884315;
+
     const newEvent = {
       ...event,
-      id: eventID // Attach the generated ID to the form data
+      id: eventID, // Attach the generated ID to the form data
+      rating: rating, // Attach the default rating to the form data
+      lat: lat, // Attach lat to form data
+      lon: lng // Attach lon to form data
     };
 
     try {
@@ -83,7 +127,11 @@ const CreateEvent = () => {
         street: '',
         toDate: '',
         webSite: '',
-        frequency: ''
+        frequency: '',
+        id: '',
+        rating: 0,
+        lat: 0.0,
+        lon: 0.0
       });
     } catch (error) {
       console.error('Error creating event:', error);
