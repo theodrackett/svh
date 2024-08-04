@@ -11,7 +11,7 @@ const CreateEvent = () => {
 
   const { goBack, loading} = useGoBack();
   const [events, setEvents] = useState([]);
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState({});
 
   const [event, setEvent] = useState({
     category: 'Default',
@@ -91,16 +91,12 @@ const CreateEvent = () => {
     const coords = await getCoordinatesFromAddress(address);
     if (!coords.error) {
       setLocation(coords);
-      console.log('Coordinates:', coords);
-      // console.log(`The latitude is: ${location.lat} and the longitude is: ${location.lng}`);
     } else {
       console.error(coords.error);
     };
 
-    // const lat = location.lat;
-    // const lon = location.lng;
-    const lat = 38.030784;
-    const lng = -121.884315;
+    const lat = location.lat;
+    const lng = location.lng;
 
     const newEvent = {
       ...event,
