@@ -15,7 +15,7 @@ function EventDetail() {
     const navigate = useNavigate();
 
     function editEvent() {
-      navigate('/edit-event');
+      navigate('/edit-event', { state: { event: event } });
     };
 
     function writeReview() {

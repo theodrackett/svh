@@ -72,7 +72,7 @@ const CreateEvent = () => {
         newEvent.lon)
       return [newEvent, ...prevEvents];
     })
-  }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;

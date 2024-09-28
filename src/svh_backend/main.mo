@@ -500,6 +500,54 @@ actor SVH {
       events := List.push(newEvent, events);
     };
 
+  public func updateEvent(
+    category: Text,
+    city: Text,
+    contact: Text,
+    country: Text,
+    creator: Text,
+    description: Text,
+    email: Text,
+    fromDate: Text,
+    name: Text,
+    phone: Text,
+    state: Text,
+    street: Text,
+    toDate: Text,
+    webSite: Text,
+    frequency: Text,
+    id: Text,
+    rating: Nat,
+    lat: Float,
+    lon: Float
+    ) 
+    {
+
+      let newEvent: Event = {
+        category = category;
+        city = city;
+        contact = contact;
+        country = country;
+        creator = creator;
+        description = description;
+        email = email;
+        fromDate = fromDate;
+        name = name;
+        phone = phone;
+        state = state;
+        street = street;
+        toDate = toDate;
+        webSite = webSite;
+        frequency = frequency;
+        id = id;
+        rating = rating;
+        lat = lat;
+        lon = lon
+      };
+
+      events := List.push(newEvent, events);
+    };
+
     private func simpleDistance(lat1: Float, lon1: Float, lat2: Float, lon2: Float): Float {
         let dLat = lat2 - lat1;
         let dLon = lon2 - lon1;
