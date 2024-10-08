@@ -273,7 +273,7 @@ function EditEvent() {
           </div>
           <div className='dos-element-container'>
             <Button onClick={goBack} loading={loading}>Go Back</Button>
-            <Button type='submit'>Edit Event</Button>
+            <Button type='submit'>Submit</Button>
           </div>
         </form>
         <Footer />

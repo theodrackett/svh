@@ -203,3 +203,19 @@ label {
   font-size: 24px;
   cursor: pointer;
 }
+
+/* Textarea styling */
+textarea {
+    width: 100%;
+    height: 300px;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-family: 'Arial', sans-serif;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    resize: none; /* Disables the ability to resize the textarea */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
