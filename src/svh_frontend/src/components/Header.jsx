@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
     return (
+    <div className="header-container">
         <header>
             <h1>Street Vendor Helper</h1>
             <nav className="nav">
@@ -14,6 +15,8 @@ function Header() {
                 </ul>
             </nav>
         </header>
+    </div>
+        
     )
 }
 
