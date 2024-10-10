@@ -19,7 +19,6 @@ function EventDetail() {
     };
 
     function writeReview() {
-      console.log('I was asked to write a review');
       navigate('/write-review');
     };
 
