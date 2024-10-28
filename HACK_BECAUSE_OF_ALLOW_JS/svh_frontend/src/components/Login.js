@@ -1,38 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import { svh_backend } from "../../../declarations/svh_backend";
+import { useNavigate } from "react-router-dom";
+import Button from './Button';
+import useGoBack from '../hooks/useGoBack';
+import { GoogleLogin } from '@react-oauth/google';
+// This is a placeholder for login. I will soon be changing it to use Internet Identity instead
 function Login() {
+    const { goBack, loading } = useGoBack();
+    const navigate = useNavigate();
     const [user, setUser] = useState({
         username: "",
         password: ""
     });
-    function processUser() {
+    async function processUser() {
         // if user exists, log her in if the password is correct else sign her up
-        useEffect(() => {
-            console.log("useEffect in login page triggered.");
-            if (user) {
-                const fetchUser = async () => {
-                    try {
-                        const userDetails = await svh_backend.findUser(user.username);
-                        console.log(`user exists: ${userDetails}`);
-                    }
-                    catch (error) {
-                        console.log('User does not exist. Go to sign up page');
-                    }
-                };
-                fetchUser();
+        const userDetails = await svh_backend.findUser(user.username);
+        if (userDetails.length != 0) {
+            if (user.password == userDetails[0].password) {
+                console.log('you are logged in!');
             }
-        }, [user.username, user]);
+            else {
+                console.log('Incorrect password...please try again.');
+            }
+        }
+        else {
+            console.log(`${user.username} not found. Please sign up.`);
+        }
     }
-    function handleChange(event) {
+    const handleChange = (event) => {
         const { name, value } = event.target;
-        setUser(() => {
-            return {
-                [name]: value
-            };
-        });
-    }
+        setUser(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
     function submitUser(event) {
         processUser();
         setUser({
@@ -42,7 +45,8 @@ function Login() {
         event.preventDefault();
     }
     function signUp() {
-        console.log("Ok, I will create a new user.");
+        // Navigate to sign up page
+        navigate('/sign-up');
     }
     return (<div className="container">
             <Header />
@@ -57,11 +61,12 @@ function Login() {
                         Password:
                         <input type="text" name="password" value={user.password} onChange={handleChange} required/>
                     </label>
-                    <button className='submit-button' onClick={submitUser}>Submit</button>
                 </div>
             </form>
-            <div>
-                <button className='submit-button' onClick={signUp}>Sign up</button>
+            <div className='container dos-element-container'>
+                <Button onClick={goBack} loading={loading}>Go Back</Button>
+                <Button onClick={submitUser}>Log in</Button>
+                <Button onClick={signUp} loading={loading}>Don't have an account? Sign up</Button>
             </div>
             <Footer />
         </div>);

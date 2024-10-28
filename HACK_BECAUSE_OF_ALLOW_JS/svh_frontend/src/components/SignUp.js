@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { svh_backend } from "../../../declarations/svh_backend";
 import Header from './Header';
 import Footer from './Footer';
+import Button from './Button';
+import useGoBack from '../hooks/useGoBack';
+// This is a placeholder for sign up. I will soon be changing it to use Internet Identity instead
 function SignUp() {
+    const { goBack, loading } = useGoBack();
     const [user, setUser] = useState({
         username: "",
         password: "",
@@ -21,15 +25,14 @@ function SignUp() {
     async function createUser(event) {
         event.preventDefault();
         // Check if user exists
-        const userExist = await fetchUser(user.username);
-        console.log(`The value of user exist is: ${userExist}`);
+        const userDetails = await svh_backend.findUser(user.username);
         // If the user doesn't exist create it
-        if (!userExist) {
-            console.log(`I am going to create the user: ${user.username}`);
+        if (userDetails.length == 0) {
+            console.log(`Creating the new user, ${user.username}`);
             svh_backend.createUser(user.username, user.password, user.fname, user.lname, user.email, user.phone);
         }
         else {
-            console.log(`username is blank or user already exists: ${user.username}`);
+            console.log(`user ${user.username} already exists.`);
         }
         setUser({
             username: "",
@@ -39,19 +42,6 @@ function SignUp() {
             email: "",
             phone: ""
         });
-    }
-    ;
-    async function fetchUser(username) {
-        try {
-            const user = await svh_backend.findUser(username);
-            console.log(`The user fetched is: ${JSON.stringify(user)}`);
-            // Check if the user is null or undefined
-            return user !== null && user !== undefined;
-        }
-        catch (error) {
-            console.error(`Error fetching user: ${error}`);
-            return false;
-        }
     }
     ;
     return (<div className="container">
@@ -83,7 +73,10 @@ function SignUp() {
                         Phone:
                         <input type="text" name="phone" value={user.phone} onChange={handleChange}/>
                     </label>
-                    <button className='submit-button' type="submit">Submit</button>
+                    <div className='container dos-element-container'>
+                        <Button onClick={goBack} loading={loading}>Go Back</Button>
+                        <Button type='submit'>Submit</Button>
+                    </div>
                 </div>
             </form>
             <Footer />

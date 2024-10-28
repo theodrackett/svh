@@ -8,6 +8,7 @@ import Login from './Login';
 import About from './About';
 import EditEvent from './EditEvent';
 import WriteReview from './WriteReview';
+import SignUp from './SignUp';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/edit-event" element={<EditEvent />} />
                 <Route path="/write-review" element={<WriteReview />} />
+                <Route path="/sign-up" element={<SignUp />} />
             </Routes>
         </div>
     </Router>

@@ -2,6 +2,7 @@ import List "mo:base/List";
 import Text "mo:base/Text";
 import Nat "mo:base/Nat";
 import Float "mo:base/Float";
+import Debug "mo:base/Debug";
 
 actor SVH {
 

@@ -1,15 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import BackButton from './BackButton';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import { svh_backend } from "../../../declarations/svh_backend";
+import Button from './Button';
+import useGoBack from '../hooks/useGoBack';
 function EventDetail() {
+    const { goBack, loading } = useGoBack();
     const { id } = useParams();
     const location = useLocation();
     const [event, setEvent] = useState(location.state?.event || null);
+    const navigate = useNavigate();
+    function editEvent() {
+        navigate('/edit-event', { state: { event: event } });
+    }
+    ;
+    function writeReview() {
+        navigate('/write-review');
+    }
+    ;
     useEffect(() => {
-        console.log("useEffect in event deails triggered.");
         if (!event) {
             const fetchEvent = async () => {
                 try {
@@ -41,8 +51,10 @@ function EventDetail() {
                     <li><strong>Website:</strong> <a href={event.webSite} target="_blank" rel="noopener noreferrer">{event.webSite}</a></li>
                 </ul>
             </section>
-            <div className='submit-button'>
-              <BackButton />
+            <div className='container dos-element-container'>
+              <Button onClick={goBack} loading={loading}>Go Back</Button>
+              <Button onClick={editEvent} loading={loading}>Edit event</Button>
+              <Button onClick={writeReview} loading={loading}>Write a review</Button>
             </div>
             
           <Footer />

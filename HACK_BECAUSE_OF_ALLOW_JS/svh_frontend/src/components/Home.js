@@ -5,14 +5,24 @@ import Event from "./Event";
 import EventDetail from "./EventDetail ";
 import TopBar from "./TopBar";
 import { svh_backend } from "../../../declarations/svh_backend";
+import useGeoLocation from "../hooks/useGeoLocation";
 function Home() {
     const [events, setEvents] = useState([]);
     const [selectedEvent, setSelectedEvent] = useState(null);
+    const location = useGeoLocation();
     useEffect(() => {
-        fetchData();
-    }, []);
-    async function fetchData() {
-        const eventsList = await svh_backend.readEvents();
+        if (location.loaded && !location.error && location.coordinates.lat && location.coordinates.lng) {
+            fetchEvents(location.coordinates.lat, location.coordinates.lng)
+                .then(data => setEvents(data))
+                .catch(err => console.error("Failed to fetch events:", err));
+        }
+    }, [location]);
+    // useEffect(() => {
+    //   fetchEvents();
+    // }, []);
+    async function fetchEvents(lat, lon) {
+        const eventsList = await svh_backend.fetchLocalEvents(30.673241, -96.373779, 100.0);
+        // const eventsList = await svh_backend.fetchAllEvents();
         setEvents(eventsList);
     }
     const handleEventDetailsClick = (event) => {

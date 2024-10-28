@@ -14,23 +14,26 @@ function Home() {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const location = useGeoLocation();
 
-  // useEffect(() => {
-  //   if (location.loaded && !location.error && location.coordinates.lat && location.coordinates.lng) {
-  //     fetchEvents(location.coordinates.lat, location.coordinates.lng)
-  //       .then(data => setEvents(data))
-  //       .catch(err => console.error("Failed to fetch events:", err));
-  //   }
-  // }, [location]);
-
   useEffect(() => {
-    fetchEvents();
-  }, []);
+    if (location.loaded && !location.error && location.coordinates.lat && location.coordinates.lng) {
+      fetchEvents(location.coordinates.lat, location.coordinates.lng);
+    }
+  }, [location]);
 
-  async function fetchEvents(lat, lon) {
-    //const eventsList = await svh_backend.fetchLocalEvents(lat, lon, 50.0);
-    const eventsList = await svh_backend.fetchAllEvents();
-    console.log(`fetchEvents was called and the eventlist is: ${eventsList[0].name}`);
+  // useEffect(() => {
+  //   fetchEvents();
+  // }, []);
+
+  async function fetchEvents(lat, lng) {
+    try {
+    const eventsList = await svh_backend.fetchLocalEvents(lat, lng, 100.0);
+    // const eventsList = await svh_backend.fetchAllEvents();
     setEvents(eventsList);
+      
+    } catch (error) {
+        console.error("Failed to fetch events:", err);
+      
+    }
   }
   
   const handleEventDetailsClick = (event) => {

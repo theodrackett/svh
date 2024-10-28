@@ -5,6 +5,7 @@ import { svh_backend } from "../../../declarations/svh_backend";
 import { useNavigate } from "react-router-dom";
 import Button from './Button';
 import useGoBack from '../hooks/useGoBack';
+import { GoogleLogin } from '@react-oauth/google';
 
 // This is a placeholder for login. I will soon be changing it to use Internet Identity instead
 function Login () {
