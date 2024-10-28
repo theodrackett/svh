@@ -136,11 +136,11 @@ const CreateEvent = () => {
   };
 
   return (
-    <div className="container create-event">
+    <div className="container">
       <Header />
       <h2>Create Event</h2>
       <form onSubmit={handleSubmit}>
-        <div className='dos-element-container'>
+        <div className='form-row'>
           <label>
             Event Name:
             <input
@@ -152,17 +152,16 @@ const CreateEvent = () => {
             />
           </label>
           <label>
-            Event from date:
+            Street:
             <input
-              type="date"
-              name="fromDate"
-              value={event.fromDate}
+              type="text"
+              name="street"
+              value={event.street}
               onChange={handleChange}
-              required
             />
           </label>
         </div>
-        <div className='dos-element-container'>
+        <div className='form-row'>
           <label>
             Category:
             <select id="event-category" onChange={ handleChange }>
@@ -186,54 +185,13 @@ const CreateEvent = () => {
             />
           </label>
         </div>
-        <div className='dos-element-container'>
+        <div className='form-row'>
           <label>
             Contact:
             <input
               type="text"
               name="contact"
               value={event.contact}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Country:
-            <input
-              type="text"
-              name="country"
-              value={event.country}
-              onChange={handleChange}
-            />
-          </label>
-        </div>
-        <div className='dos-element-container'>
-          <label>
-            Creator:
-            <input
-              type="text"
-              name="creator"
-              value={event.creator}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Email:
-            <input
-              type="email"
-              name="email"
-              value={event.email}
-              onChange={handleChange}
-            />
-          </label>
-        </div>
-        <div className='dos-element-container'>
-          <label>
-            Phone number:
-            <input
-              type="tel"
-              name="phone"
-              value={event.phone}
               onChange={handleChange}
               required
             />
@@ -248,14 +206,56 @@ const CreateEvent = () => {
             />
           </label>
         </div>
-        <div className='dos-element-container'>
+        <div className='form-row'>
           <label>
-            Street:
+            Creator:
             <input
               type="text"
-              name="street"
-              value={event.street}
+              name="creator"
+              value={event.creator}
               onChange={handleChange}
+            />
+          </label>
+          <label>
+            Country:
+            <input
+              type="text"
+              name="country"
+              value={event.country}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+        <div className='form-row'>
+          <label>
+            Phone number:
+            <input
+              type="tel"
+              name="phone"
+              value={event.phone}
+              onChange={handleChange}
+              required
+            />
+          </label>
+          <label>
+            Email:
+            <input
+              type="email"
+              name="email"
+              value={event.email}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+        <div className='form-row'>
+          <label>
+            Event from date:
+            <input
+              type="date"
+              name="fromDate"
+              value={event.fromDate}
+              onChange={handleChange}
+              required
             />
           </label>
           <label>
@@ -268,7 +268,7 @@ const CreateEvent = () => {
             />
           </label>
         </div>
-        <div className='dos-element-container'>
+        <div className='form-row'>
           <label>
             Website:
             <input
@@ -291,13 +291,14 @@ const CreateEvent = () => {
             </select>
           </label>
         </div>
-        <div className='event-description-container'>
-          <label>Description:</label>
-            <textarea className='event-description'
+        <div className='form-row'>
+          <label>Description:
+            <textarea className='description-textarea'
               name="description"
               value={event.description}
               onChange={handleChange}
             />
+            </label>
         </div>
         <div className='dos-element-container'>
           <Button onClick={goBack} loading={loading}>Go Back</Button>

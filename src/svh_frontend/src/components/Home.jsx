@@ -26,13 +26,12 @@ function Home() {
 
   async function fetchEvents(lat, lng) {
     try {
-    const eventsList = await svh_backend.fetchLocalEvents(lat, lng, 100.0);
-    // const eventsList = await svh_backend.fetchAllEvents();
-    setEvents(eventsList);
+      const eventsList = await svh_backend.fetchLocalEvents(lat, lng, 5000.0);
+      // const eventsList = await svh_backend.fetchAllEvents();
+      setEvents(eventsList);
       
     } catch (error) {
         console.error("Failed to fetch events:", err);
-      
     }
   }
   

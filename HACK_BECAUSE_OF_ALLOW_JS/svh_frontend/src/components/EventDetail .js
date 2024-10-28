@@ -13,12 +13,12 @@ function EventDetail() {
     const navigate = useNavigate();
     function editEvent() {
         navigate('/edit-event', { state: { event: event } });
-    }
-    ;
+    };
+
     function writeReview() {
         navigate('/write-review');
-    }
-    ;
+    };
+    
     useEffect(() => {
         if (!event) {
             const fetchEvent = async () => {
