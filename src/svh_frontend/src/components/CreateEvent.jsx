@@ -9,7 +9,6 @@ import EventForm from './EventForm';
 const CreateEvent = () => {
 
   const [events, setEvents] = useState([]);
-  const [location, setLocation] = useState({});
 
   const [event, setEvent] = useState({
     category: 'Default',
@@ -87,21 +86,13 @@ const CreateEvent = () => {
     const address = `${event.street}, ${event.city}, ${event.country}`;
 
     const coords = await getCoordinatesFromAddress(address);
-    if (!coords.error) {
-      setLocation(coords);
-    } else {
-      console.error(coords.error);
-    };
-
-    const lat = location.lat;
-    const lng = location.lng;
 
     const newEvent = {
       ...event,
       id: eventID, // Attach the generated ID to the form data
       rating: rating, // Attach the default rating to the form data
-      lat: lat, // Attach lat to form data
-      lon: lng // Attach lon to form data
+      lat: coords.lat, // Attach lat to form data
+      lon: coords.lng // Attach lon to form data
     };
 
     try {
