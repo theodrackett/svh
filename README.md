@@ -4,6 +4,8 @@ Welcome to my Street Vendor Helper project built on the Internet Computer framew
 
 Street Vendor Helpr is an App that helps Street Vendors find vending opportunities in the local area. They can also rate the events to help other vendors and help organizers improve events.
 
+Please check out the live site here on the IC: https://edpah-uyaaa-aaaaj-qa54a-cai.icp0.io/
+
 If you want to run this project, you might want to try the following commands:
 
 ```bash
