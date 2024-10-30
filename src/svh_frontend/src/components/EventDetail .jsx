@@ -56,6 +56,11 @@ function EventDetail() {
                     <li><strong>Phone:</strong> <a href={`tel:${event.phone}`}>{event.phone}</a></li>
                     <li><strong>Website:</strong> <a href={event.webSite} target="_blank" rel="noopener noreferrer">{event.webSite}</a></li>
                 </ul>
+                <div className='form-row'>
+                  <label>Description:
+                    <textarea className='description-textarea'>{event.description}</textarea>
+                    </label>
+                </div>
             </section>
             <div className='container dos-element-container'>
               <Button onClick={goBack} loading={loading}>Go Back</Button>

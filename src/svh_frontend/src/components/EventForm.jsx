@@ -1,3 +1,4 @@
+import React, { useEffect, useRef } from 'react';
 import Button from "./Button";
 import useGoBack from '../hooks/useGoBack';
 
@@ -5,6 +6,14 @@ function EventForm(props) {
 
     const event = props.event;
     const { goBack, loading} = useGoBack();
+    const inputRef = useRef(null); //Create a ref for the event name field
+
+    useEffect(() => {
+        // Set focus to event name field when the component mounts
+        if (inputRef.current) {
+        inputRef.current.focus();
+        }
+    }, [])
 
     return (
         
@@ -14,6 +23,7 @@ function EventForm(props) {
             Event Name:
             <input
               type="text"
+              ref={inputRef}
               name="name"
               value={event.name}
               onChange={props.handleChange}
@@ -72,6 +82,7 @@ function EventForm(props) {
               name="state"
               value={event.state}
               onChange={props.handleChange}
+              required
             />
           </label>
         </div>

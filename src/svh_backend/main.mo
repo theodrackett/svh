@@ -72,7 +72,7 @@ actor SVH {
     lon: Float;
   };
 
-  var events: List.List<Event> = List.fromArray([
+  stable var events: List.List<Event> = List.fromArray([
     {
         category = "Arts & Craft";
         city = "Bryan";
